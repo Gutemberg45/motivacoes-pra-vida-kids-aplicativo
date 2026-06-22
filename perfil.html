@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil — Motivações Pra Vida Kids</title>
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        :root {
+            --verde-floresta: #2c5f2d;
+            --verde-suave: #97bc62;
+            --azul-ceu: #a8d1e7;
+            --dourado-suave: #f9dc5c;
+            --branco: #ffffff;
+            --texto: #2b2b2b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+        body {
+            background: linear-gradient(180deg, var(--azul-ceu) 0%, var(--verde-suave) 100%);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .voltar {
+            color: var(--verde-floresta);
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .cabecalho { text-align: center; margin-bottom: 1.5rem; color: var(--verde-floresta); }
+        .cartao-perfil {
+            max-width: 480px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.95);
+            padding: 1.8rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .info { margin-bottom: 1rem; line-height: 1.6; }
+        .info strong { color: var(--verde-floresta); }
+        .aviso-plano {
+            background-color: var(--dourado-suave);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin: 1.2rem 0;
+        }
+        .botao {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 0.8rem;
+        }
+        .botao-secundario { background-color: var(--verde-suave); color: white; }
+    </style>
+</head>
+<body>
+    <a href="/index.html" class="voltar">← Voltar à página inicial</a>
+
+    <header class="cabecalho">
+        <h1>👤 Meu Perfil</h1>
+        <p>Dados e status do seu acesso</p>
+    </header>
+
+    <main class="cartao-perfil">
+        <div class="info">
+            <p><strong>Proprietário:</strong> Gutemberg45</p>
+            <p><strong>Aplicativo:</strong> Motivações Pra Vida Kids</p>
+            <p><strong>Versão:</strong> 1.0.0</p>
+        </div>
+
+        <div class="aviso-plano">
+            ✅ Plano Ativo — Acesso liberado<br>
+            <span style="font-size:0.9rem;">Sem renovação automática</span>
+        </div>
+
+        <div class="info">
+            <p><strong>Dias restantes:</strong> 30 dias</p>
+            <p><strong>Recursos liberados:</strong> Criação ilimitada de histórias, cores e temas especiais</p>
+            <p><strong>Próxima etapa:</strong> Integração com imagens personalizadas</p>
+        </div>
+
+        <button class="botao botao-secundario" onclick="limparDados()">Limpar histórias salvas</button>
+    </main>
+
+    <script>
+        function limparDados() {
+            if (confirm('Tem certeza que deseja apagar todas as histórias salvas?')) {
+                localStorage.removeItem('ultimaHistoria');
+                alert('Dados limpos com sucesso!');
+                window.location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
