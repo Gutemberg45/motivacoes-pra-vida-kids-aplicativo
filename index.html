@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivações Pra Vida Kids - Aplicativo</title>
+    <meta name="description" content="Aplicativo de histórias personalizadas onde a criança é a protagonista">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        :root {
+            --verde-floresta: #2c5f2d;
+            --verde-suave: #97bc62;
+            --azul-ceu: #a8d1e7;
+            --dourado-suave: #f9dc5c;
+            --branco: #ffffff;
+            --texto: #2b2b2b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+        body {
+            background: linear-gradient(180deg, var(--azul-ceu) 0%, var(--verde-suave) 100%);
+            min-height: 100vh;
+            color: var(--texto);
+        }
+        .cabecalho {
+            background-color: rgba(255,255,255,0.9);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .cabecalho h1 { color: var(--verde-floresta); font-size: 1.8rem; }
+        .conteudo { max-width: 480px; margin: 2rem auto; padding: 0 1rem; }
+        .painel {
+            background-color: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .botao {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin: 0.8rem 0;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .botao-principal { background-color: var(--verde-floresta); color: white; }
+        .botao-principal:hover { background-color: #234d24; }
+        .botao-secundario { background-color: var(--dourado-suave); color: var(--texto); }
+        .aviso { text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #444; }
+    </style>
+</head>
+<body>
+    <header class="cabecalho">
+        <h1>✨ Motivações Pra Vida Kids ✨</h1>
+        <p>Onde a criança é a protagonista da aventura</p>
+    </header>
+    <main class="conteudo">
+        <div class="painel">
+            <div id="area-login">
+                <h2 style="text-align:center; margin-bottom:1.5rem;">Acesso ao App</h2>
+                <button class="botao botao-principal" onclick="abrirCriador()">Criar Nova História</button>
+                <button class="botao botao-secundario" onclick="abrirBiblioteca()">Minhas Histórias</button>
+                <button class="botao botao-secundario" onclick="abrirPerfil()">Meu Perfil</button>
+            </div>
+            <div class="aviso">Acesso liberado conforme plano contratado<br>Sem renovação automática</div>
+        </div>
+    </main>
+    <script>
+        function abrirCriador() { window.location.href = '/criar-historia.html'; }
+        function abrirBiblioteca() { window.location.href = '/biblioteca.html'; }
+        function abrirPerfil() { window.location.href = '/perfil.html'; }
+        const dadosUsuario = { plano: "ativo", diasRestantes: 30, podeUsarFoto: false };
+    </script>
+</body>
+</html>
