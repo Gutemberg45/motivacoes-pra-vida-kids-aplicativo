@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar História — Motivações Pra Vida Kids</title>
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        :root {
+            --verde-floresta: #2c5f2d;
+            --verde-suave: #97bc62;
+            --azul-ceu: #a8d1e7;
+            --dourado-suave: #f9dc5c;
+            --branco: #ffffff;
+            --texto: #2b2b2b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+        body {
+            background: linear-gradient(180deg, var(--azul-ceu) 0%, var(--verde-suave) 100%);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .voltar {
+            color: var(--verde-floresta);
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .cabecalho { text-align: center; margin-bottom: 1.5rem; color: var(--verde-floresta); }
+        .formulario {
+            max-width: 480px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.95);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .campo { margin-bottom: 1rem; }
+        label { display: block; font-weight: bold; margin-bottom: 0.4rem; color: var(--verde-floresta); }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--verde-suave);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        textarea { min-height: 120px; resize: vertical; }
+        .botao {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        .botao-principal { background-color: var(--verde-floresta); color: white; }
+        .botao-principal:hover { background-color: #234d24; }
+    </style>
+</head>
+<body>
+    <a href="/index.html" class="voltar">← Voltar à página inicial</a>
+
+    <header class="cabecalho">
+        <h1>✏️ Criar Nova História</h1>
+        <p>Preencha os dados para a criança ser a protagonista</p>
+    </header>
+
+    <main class="formulario">
+        <div class="campo">
+            <label>Nome da criança:</label>
+            <input type="text" id="nome" placeholder="Ex: Ana, Pedro..." required>
+        </div>
+
+        <div class="campo">
+            <label>Idade:</label>
+            <input type="number" id="idade" min="1" max="12" placeholder="Ex: 6">
+        </div>
+
+        <div class="campo">
+            <label>Tema da história:</label>
+            <select id="tema">
+                <option value="amizade">Amizade e companheirismo</option>
+                <option value="coragem">Coragem e confiança</option>
+                <option value="generosidade">Generosidade e bondade</option>
+                <option value="natureza">Natureza e cuidar do mundo</option>
+                <option value="escola">Aprendizado e escola</option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label>Personagem preferido ou elemento especial:</label>
+            <input type="text" id="personagem" placeholder="Ex: fada, cavalo, robô, floresta...">
+        </div>
+
+        <div class="campo">
+            <label>Mensagem ou lição que quer destacar:</label>
+            <textarea id="mensagem" placeholder="Ex: Sempre devemos ajudar os amigos..."></textarea>
+        </div>
+
+        <button class="botao botao-principal" onclick="gerarHistoria()">Gerar Minha História ✨</button>
+    </main>
+
+    <script>
+        function gerarHistoria() {
+            const dados = {
+                nome: document.getElementById('nome').value,
+                idade: document.getElementById('idade').value,
+                tema: document.getElementById('tema').value,
+                personagem: document.getElementById('personagem').value,
+                mensagem: document.getElementById('mensagem').value
+            };
+            if (!dados.nome) return alert('Por favor, digite o nome da criança!');
+            localStorage.setItem('ultimaHistoria', JSON.stringify(dados));
+            alert('História criada com sucesso! Você pode vê-la na sua biblioteca.');
+            window.location.href = '/biblioteca.html';
+        }
+    </script>
+</body>
+</html>
