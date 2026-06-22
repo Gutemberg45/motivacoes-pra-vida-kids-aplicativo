@@ -1,22 +1,16 @@
 {
-  "expo": {
-    "name": "Motivações Pra Vida Kids - Aplicativo",
-    "slug": "motivacoes-pra-vida-kids-aplicativo",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./icone-192.png",
-    "splash": {
-      "image": "./icone-512.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#a8d1e7"
-    },
-    "web": {
-      "favicon": "./icone-192.png",
-      "startUrl": "/index.html"
-    },
-    "extra": {
-      "theme_color": "#2c5f2d",
-      "background_color": "#a8d1e7"
-    }
-  }
+  "name": "Motivações Pra Vida Kids - Aplicativo",
+  "slug": "motivacoes-pra-vida-kids-aplicativo",
+  "version": "1.0.0",
+  "orientation": "portrait",
+  "icon": "./icone-512.png",
+  "splash": {
+    "image": "./tela-fundo.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#ffffff"
+  },
+  "assets": [
+    "./icone-192.png"
+  ],
+  "backgroundColor": "#ffffff"
 }
