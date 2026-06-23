@@ -1,56 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Motivações Pra Vida Kids - Aplicativo</title>
-  <meta name="description" content="Aplicativo de histórias personalizadas onde a criança é a protagonista">
-  <link rel="manifest" href="./manifest.json">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icone-192.png">
-  <link rel="apple-touch-icon" sizes="512x512" href="./icone-512.png">
-  <meta name="theme-color" content="#2c5f2d">
-  <style>
-    :root {
-      --verde-floresta: #2c5f2d;
-      --verde-suave: #97bc62;
-      --azul-ceu: #a8d1e7;
-      --dourado-suave: #f9dc5c;
-      --branco: #ffffff;
-      --texto: #2b2b2b;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
-    body {
-      background: linear-gradient(180deg, var(--azul-ceu) 0%, var(--verde-suave) 100%);
-      min-height: 100vh;
-      color: var(--texto);
-    }
-    .cabecalho {
-      background-color: rgba(255,255,255,0.9);
-      padding: 1rem;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .cabecalho h1 { color: var(--verde-floresta); font-size: 1.8rem; }
-    .conteudo { max-width: 480px; margin: 2rem auto; padding: 0 1rem; }
-    .painel {
-      background-color: rgba(255,255,255,0.95);
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    }
-    .botao {
-      display: block;
-      width: 100%;
-      padding: 1rem;
-      margin: 0.8rem 0;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .botao-principal { background-color: var(--verde-floresta); color: white; }
-    .botao-principal:hover { background-color: #23ad24; }
-    .botao-secundario { background-color: var(--dourado-suave); color: var(--texto); }
-    .aviso { text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #444; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivações Pra Vida Kids</title>
+    <meta name="description" content="Histórias onde seu filho é o herói — seguras e educativas para crianças de 3 a 13 anos.">
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
+        body { background:linear-gradient(160deg, #e0f7fa, #e8f5e9); color:#2c3e50; text-align:center; padding:2rem 1rem; }
+        .container { max-width:900px; margin:0 auto; background:#ffffffdd; border-radius:20px; padding:2rem; box-shadow:0 4px 20px #00000022; }
+        h1 { color:#2b7a78; font-size:2rem; margin-bottom:1rem; }
+        .subtitulo { font-size:1.2rem; color:#4a7c59; margin-bottom:2rem; line-height:1.5; }
+        .destaques { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:1rem; margin:2rem 0; text-align:left; }
+        .item { background:#f0f9f9; padding:1rem; border-radius:12px; }
+        .botao { display:inline-block; background:#2b7a78; color:white; padding:1rem 2rem; border-radius:12px; text-decoration:none; font-weight:bold; font-size:1.1rem; margin:1rem 0; }
+        .botao:hover { background:#21867a; }
+        .aviso { font-size:0.9rem; color:#666; margin-top:2rem; }
+    </style>
 </head>
+<body>
+    <div class="container">
+        <h1>✨ Motivações Pra Vida Kids ✨</h1>
+        <p class="subtitulo">Onde seu filho é o <strong>protagonista</strong> de histórias únicas, seguras e educativas<br>Para crianças de <strong>3 a 13 anos</strong></p>
+        <div class="destaques">
+            <div class="item">🎨 Escolha personagem, roupas e cenários</div>
+            <div class="item">🌲 Estilo mágico e ilustrações 3D</div>
+            <div class="item">🛡️ 100% Seguro — em conformidade com a LGPD</div>
+            <div class="item">📱 Funciona como aplicativo instalável</div>
+            <div class="item">📖 Histórias adaptadas por idade</div>
+            <div class="item">🔒 Acesso só com aprovação do responsável</div>
+        </div>
+        <a href="/src/login.html" class="botao">🚀 COMEÇAR AGORA</a>
+        <p class="aviso">Versão Oficial 2026<br>Página de vendas: https://bit.ly/motivacoespravidakids-paginavendas</p>
+    </div>
+</body>
+</html>
