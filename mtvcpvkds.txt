@@ -1,171 +1,143 @@
-# MOTIVAÇÕES PRA VIDA KIDS
-# ARQUIVO ÚNICO COMPLETO – ESPECIFICAÇÃO OFICIAL 2026
-# Versão definitiva | Página oficial: https://bit.ly/motivacoespravidakids-paginavendas
-# Suporte: motivacoespravida1980@gmail.com
-# Plataforma: **PWA Instalável • Android • iOS • Tablets • Computadores**
+# 🚀 MOTIVAÇÕES PRA VIDA KIDS — ARQUITETURA COMPLETA DO SISTEMA
 
----
+====================================================================
+📌 PLATAFORMAS UTILIZADAS NO PROJETO
+====================================================================
 
-## 🎯 VISÃO GERAL
-Criar um aplicativo **seguro, moderno, elegante e emocional**, que permita a crianças de **3 a 13 anos** viverem aventuras personalizadas onde elas são as protagonistas de histórias únicas criadas por Inteligência Artificial.
-O objetivo é proporcionar uma experiência imersiva, fazendo a criança sentir que está realmente dentro da história.
-✅ PWA Instalável (funciona como app nativo)
-✅ Funciona em celulares e tablets de qualquer tamanho
-✅ Totalmente em conformidade com a LGPD
+📁 **GITHUB — REPOSITÓRIO PRINCIPAL DO PROJETO**
+É onde todo o código e conteúdo do sistema fica armazenado e organizado.
 
----
+**Arquivos principais na pasta raiz:**
+- `mtvcpvkds.txt` → Regras, especificações e estrutura completa do sistema
+- `index.html` → Tela inicial do aplicativo (interface principal)
+- `vercel.json` → Configuração de hospedagem e rotas de navegação
+- `manifest.json` → Configuração para funcionar como aplicativo instalável (PWA)
+- `/src` → Páginas, telas e funcionalidades internas do sistema
+- `/services` → Integrações com IA, banco de dados e processamento de pagamentos
 
-## ✨ DIFERENCIAL EXCLUSIVO
-O aplicativo **não é só um gerador de histórias**: **ele transforma a criança no personagem principal**.
-Antes de começar, o usuário define detalhes que mudam completamente o enredo e as ilustrações:
-✅ Escolha do tipo de personagem
-✅ Roupa e traje
-✅ Universo exclusivo
-✅ Companheiros de aventura
-✅ Veículos especiais
-✅ Poderes e habilidades
-✅ Cenário principal
-✅ Missão e objetivo da história
+**Funções desta plataforma:**
+✔ Criação e edição de todo o conteúdo e código
+✔ Controle de versões e alterações
+✔ Organização completa da estrutura do projeto
+✔ Integração automática com a plataforma de hospedagem Vercel
 
-Todas essas escolhas são refletidas automaticamente tanto no texto quanto nas ilustrações geradas.
+====================================================================
 
----
+🌐 **VERCEL — HOSPEDAGEM E EXECUÇÃO DO SISTEMA**
+Plataforma onde o aplicativo fica disponível online e acessível ao público.
 
-## 🧒 PERSONALIZAÇÃO POR IDADE
-📌 **3 a 5 anos**
-  • Frases curtas
-  • Linguagem muito simples
-  • Histórias rápidas
-  • Muitas ilustrações
-  • Narração suave e calma
+**Funções principais:**
+- Hospedagem do site e aplicativo no formato PWA
+- Publicação automática da versão mais recente vinda do GitHub
+- Configuração de endereço público e certificado de segurança HTTPS automático
+- Armazenamento seguro de variáveis de ambiente e chaves secretas
+- Atualização por meio da função **Reimplantar** sempre que houver alterações
 
-📌 **6 a 8 anos**
-  • Aventuras educativas
-  • Mistérios leves
-  • Mais diálogos
-  • Personagens divertidos
+**Endereço oficial do aplicativo:**
+`https://motivacoespravidakidsmd.vercel.app`
 
-📌 **9 a 13 anos**
-  • Aventuras elaboradas
-  • Desafios inteligentes
-  • Exploração
-  • Missões com objetivos claros
+**Funções desta plataforma:**
+✔ Colocar o sistema no ar para acesso público
+✔ Garantir funcionamento em navegadores de celular, tablet e computador
+✔ Habilitar instalação como aplicativo nativo nos aparelhos
 
----
+====================================================================
 
-## 🦸 TIPOS DE PERSONAGENS DISPONÍVEIS
-• Menino Aventureiro
-• Menina Aventureira
-• Príncipe
-• Princesa
-• Explorador
-• Cientista
-• Astronauta
-• Super‑Herói
-• Super‑Heroína
-• Fada
-• Mago
-• Guardião dos Animais
-• Cavaleiro
-• Capitão Espacial
-• Pirata do Bem
-• Inventor
-• Protetor da Natureza
+🧠 **SUPABASE — BANCO DE DADOS + AUTENTICAÇÃO**
+Responsável por todo o gerenciamento de dados, cadastro e acesso seguro do sistema.
 
----
+**Tabelas obrigatórias configuradas:**
+- `users` → Dados dos responsáveis e status do plano contratado
+- `stories` → Histórias criadas por cada usuário
+- `consent` → Registro da concordância com termos e regras de privacidade
+- `subscriptions` → Controle de validade, status e renovação de assinaturas
 
-## 👕 SISTEMA DE ROUPAS E TRAJES POR TEMA
-O visual escolhido aparece em todas as ilustrações da história:
-✨ **Reino Encantado** → Coroas • Tiaras • Vestidos mágicos • Capas reais
-✨ **Espaço Sideral** → Capacetes futuristas • Trajes espaciais • Mochilas propulsoras
-✨ **Floresta Encantada** → Capas naturais • Mochilas mágicas • Lanternas brilhantes
-✨ **Explorador** → Chapéu aventureiro • Binóculos • Equipamentos de descoberta
-✨ **Super‑Herói** → Máscaras • Capas • Uniformes personalizados
+**Funções desta plataforma:**
+✔ Sistema de login e autenticação segura
+✔ Armazenamento permanente de todo o conteúdo gerado
+✔ Controle automático de permissões e tempo de acesso
+✔ Proteção e criptografia dos dados conforme a LGPD
 
----
+**Regra de integração:**
+- Endereço e chaves de acesso são cadastrados **apenas como variáveis na Vercel**
+- Nunca são mostrados ou armazenados nos arquivos visíveis no GitHub
 
-## 🌎 CATEGORIAS E TEMAS DE AVENTURAS
-Diversos mundos, gerando milhares de combinações únicas:
-• Reino Encantado
-• Mundo dos Dinossauros
-• Espaço Sideral
-• Fundo do Mar
-• Cidade dos Heróis
-• Floresta Mágica
-• Reino dos Dragões
-• Escola dos Magos
-• Ilha Misteriosa
-• Mundo dos Sonhos
-• Reino dos Animais Falantes
-• Laboratório Científico
-• Castelo das Estrelas
-• Vila da Amizade
-• Expresso do Tempo
+====================================================================
 
-📚 **Valores sempre ensinados**: Respeito • Honestidade • Gratidão • Coragem • Gentileza • Generosidade • Responsabilidade • Perseverança
-📚 **Temas educativos**: Meio Ambiente • Ciência • Natureza • Animais • Amizade • Família • Cooperação • Inclusão • Descobertas
+🤖 **OPENAI — INTELIGÊNCIA ARTIFICIAL**
+Responsável pela criação inteligente de todo o conteúdo personalizado.
 
----
+**Funções principais:**
+- Geração de histórias adaptadas por idade e perfil da criança
+- Criação de textos educativos, positivos e adequados ao público infantil
+- Geração de ilustrações com estilo visual definido e sem conteúdo inadequado
 
-## 🎨 ILUSTRAÇÕES AUTOMÁTICAS POR IA
-**Estilo visual obrigatório**:
-> Arte infantil **3D cinematográfico**, colorida, alegre, segura, expressiva, com iluminação mágica e suave, alta definição, sem elementos assustadores ou violentos.
-Cada desenho deve refletir fielmente:
-• Personagem escolhido
-• Roupa e traje
-• Companheiros
-• Cenário da aventura
-• Ação da história
+**Configuração de segurança:**
+- Chave de API gerada na conta da OpenAI
+- Cadastrada exclusivamente como variável de ambiente na Vercel
+- Nunca incluída diretamente no código ou arquivos do repositório
 
-Quantidade por história: **Capa + 1 imagem por capítulo + imagem final = 5 a 7 ilustrações**
+**Funções desta plataforma:**
+✔ Criação de experiências únicas para cada criança
+✔ Geração automática de conteúdo consistente com as escolhas feitas
+✔ Ilustrações com padrão seguro e aprovado para o projeto
 
----
+====================================================================
 
-## 📸 RECURSO PREMIUM EXCLUSIVO
-👤 **CRIANÇA DENTRO DA HISTÓRIA**
-👉 **Disponível SOMENTE no Plano Premium Anual**
-• Permite envio de foto para adaptar rosto, cabelo e características visuais ao personagem principal
-• IA ajusta tudo para que a criança sinta que realmente entrou na história
-• Fotos são armazenadas com segurança e **excluídas logo após processamento**
-• Bloqueado com mensagem de aviso nos outros planos
+💳 **HOTMART — VENDAS E MONETIZAÇÃO**
+Plataforma responsável pelo processamento de pagamentos e liberação de acesso.
 
----
+**Configurações obrigatórias:**
+- Produtos cadastrados conforme os planos definidos: 15 dias, mensal e anual
+- Endereço de **Webhook** configurado para receber confirmações de compra
+- Regras de envio de dados para integração com o Supabase
 
-## 🎙️ NARRAÇÃO PROFISSIONAL
-Duas vozes gravadas em qualidade de estúdio, sempre disponíveis:
-🟣 **Voz Feminina Calma e Carinhoso** — ideal para momentos de tranquilidade e fantasia
-🟠 **Voz Masculina Alegre e Amigável** — ideal para animar aventuras e desafios
+**Fluxo completo de funcionamento:**
+1. Responsável realiza a compra do plano escolhido
+2. Hotmart confirma e aprova o pagamento
+3. Sinal automático é enviado pelo Webhook
+4. Supabase registra e libera o acesso correspondente
+5. Usuário já pode entrar e usar o sistema
 
-⚙️ **Controles da leitura**: Reproduzir • Pausar • Voltar • Avançar • Ajustar velocidade
+**Funções desta plataforma:**
+✔ Processamento seguro de pagamentos por Pix, cartão e outros meios
+✔ Liberação automática logo após aprovação
+✔ Controle da validade e renovação de planos
 
----
+====================================================================
 
-## 💳 PLANOS E CONDIÇÕES
-🔥 **Plano Lançamento – 15 dias por R$ 19,90**
-✅ Acesso completo a todas as histórias, vozes e universos
-✅ Histórias ilimitadas durante o período
+🔄 **RESUMO GERAL DO FLUXO DE PLATAFORMAS**
+====================================================================
 
-📅 **Plano Mensal – 30 dias por R$ 37,80**
-✅ Tudo do plano anterior
-✅ Acesso contínuo
-✅ **SEM renovação automática** — só renova com confirmação
+📁 **GitHub** → Armazena todo o código e estrutura do projeto
+🌐 **Vercel** → Lê os arquivos, hospeda e disponibiliza o aplicativo online
+🧠 **Supabase** → Gerencia cadastro, login e banco de dados protegido
+🤖 **OpenAI** → Gera histórias e imagens personalizadas conforme regras
+💳 **Hotmart** → Processa pagamentos e envia confirmações para liberar acesso
 
-🏆 **Plano Premium Anual – 365 dias por R$ 444,17 – MELHOR VALOR**
-✅ Tudo incluso de todos os planos
-✅ ✨ Recurso exclusivo: Personalização com foto
-✅ Prioridade no processamento
-✅ Maior economia
+====================================================================
 
-💳 Pagamento seguro: **Pix, NuPay ou Cartão**
-🚀 Acesso imediato após confirmação
+🚀 **FLUXO GERAL DE USO DO SISTEMA**
+====================================================================
 
----
+1. Acesso inicial ao aplicativo hospedado na **Vercel**
+2. Realização de cadastro ou login seguro via **Supabase**
+3. Verificação automática para confirmar se o plano está ativo
+4. Personalização e criação da história usando a **OpenAI**
+5. Salvamento automático da história e dados no **Supabase**
+6. Contínua verificação de validade conforme dados vindos da **Hotmart**
+7. Uso total das funcionalidades dentro do período contratado
 
-## 🛡️ SEGURANÇA E PRIVACIDADE
-✅ Cumprimento integral da LGPD
-✅ Consentimento obrigatório dos responsáveis
-✅ Sem propagandas, sem links externos
-✅ Dados criptografados e não compartilhados
-✅ Sem conteúdo inadequado ou assustador
-✅ Exclusão segura de imagens após uso
+====================================================================
 
+🎯 **OBJETIVO FINAL DO PROJETO**
+====================================================================
+
+Construir uma plataforma **SaaS infantil completa, segura e escalável**, reunindo todos os requisitos:
+✔ Funciona e pode ser instalado como aplicativo nativo em celulares
+✔ Histórias totalmente adaptadas e personalizadas por Inteligência Artificial
+✔ Sistema de cadastro e login seguro e protegido
+✔ Pagamentos processados e liberados de forma automática
+✔ Controle total de assinaturas e tempo de acesso
+✔ Banco de dados estruturado e em conformidade com a legislação
+✔ Experiência educativa, positiva e segura para crianças de 3 a 13 anos
