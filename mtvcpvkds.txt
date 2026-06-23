@@ -1,143 +1,31 @@
-# 🚀 MOTIVAÇÕES PRA VIDA KIDS — ARQUITETURA COMPLETA DO SISTEMA
+# 🚀 MOTIVAÇÕES PRA VIDA KIDS — ESTRUTURA COMPLETA DO APLICATIVO
+**Versão:** 2026 Definitiva
+**Público‑alvo:** Crianças de 3 a 13 anos + Responsáveis legais
+**Endereço oficial:** https://motivacoespravidakidsmd.vercel.app
+**Conformidade:** LGPD e normas de proteção à infância
 
 ====================================================================
-📌 PLATAFORMAS UTILIZADAS NO PROJETO
+## 📑 1 — VISÃO E PRINCÍPIOS GERAIS
 ====================================================================
 
-📁 **GITHUB — REPOSITÓRIO PRINCIPAL DO PROJETO**
-É onde todo o código e conteúdo do sistema fica armazenado e organizado.
+### 🎯 Objetivo Principal
+Oferecer um aplicativo **seguro, educativo e imersivo**, onde a criança é sempre a protagonista de histórias únicas geradas por Inteligência Artificial — com linguagem e complexidade adaptadas exatamente à sua idade.
 
-**Arquivos principais na pasta raiz:**
-- `mtvcpvkds.txt` → Regras, especificações e estrutura completa do sistema
-- `index.html` → Tela inicial do aplicativo (interface principal)
-- `vercel.json` → Configuração de hospedagem e rotas de navegação
-- `manifest.json` → Configuração para funcionar como aplicativo instalável (PWA)
-- `/src` → Páginas, telas e funcionalidades internas do sistema
-- `/services` → Integrações com IA, banco de dados e processamento de pagamentos
+### ✨ Diferenciais
+- Total personalização antes de cada criação
+- Ilustrações consistentes com o perfil escolhido
+- Estilo visual suave, mágico e acolhedor
+- **Sem renovação automática** — renovação só com nova compra
+- Funciona como aplicativo instalável em celulares e tablets
+- Controle total e transparente para o responsável
 
-**Funções desta plataforma:**
-✔ Criação e edição de todo o conteúdo e código
-✔ Controle de versões e alterações
-✔ Organização completa da estrutura do projeto
-✔ Integração automática com a plataforma de hospedagem Vercel
-
-====================================================================
-
-🌐 **VERCEL — HOSPEDAGEM E EXECUÇÃO DO SISTEMA**
-Plataforma onde o aplicativo fica disponível online e acessível ao público.
-
-**Funções principais:**
-- Hospedagem do site e aplicativo no formato PWA
-- Publicação automática da versão mais recente vinda do GitHub
-- Configuração de endereço público e certificado de segurança HTTPS automático
-- Armazenamento seguro de variáveis de ambiente e chaves secretas
-- Atualização por meio da função **Reimplantar** sempre que houver alterações
-
-**Endereço oficial do aplicativo:**
-`https://motivacoespravidakidsmd.vercel.app`
-
-**Funções desta plataforma:**
-✔ Colocar o sistema no ar para acesso público
-✔ Garantir funcionamento em navegadores de celular, tablet e computador
-✔ Habilitar instalação como aplicativo nativo nos aparelhos
+### ❌ Regras de Conteúdo Proibido
+- Sem violência, lutas, armas ou agressão
+- Sem cenas de medo, terror ou pesadelos
+- Sem linguagem ou temas inadequados à faixa etária
+- Sem compartilhamento público de dados pessoais ou fotos
 
 ====================================================================
-
-🧠 **SUPABASE — BANCO DE DADOS + AUTENTICAÇÃO**
-Responsável por todo o gerenciamento de dados, cadastro e acesso seguro do sistema.
-
-**Tabelas obrigatórias configuradas:**
-- `users` → Dados dos responsáveis e status do plano contratado
-- `stories` → Histórias criadas por cada usuário
-- `consent` → Registro da concordância com termos e regras de privacidade
-- `subscriptions` → Controle de validade, status e renovação de assinaturas
-
-**Funções desta plataforma:**
-✔ Sistema de login e autenticação segura
-✔ Armazenamento permanente de todo o conteúdo gerado
-✔ Controle automático de permissões e tempo de acesso
-✔ Proteção e criptografia dos dados conforme a LGPD
-
-**Regra de integração:**
-- Endereço e chaves de acesso são cadastrados **apenas como variáveis na Vercel**
-- Nunca são mostrados ou armazenados nos arquivos visíveis no GitHub
-
+## 📁 2 — ESTRUTURA DE ARQUIVOS E PASTAS (RAIZ DO GITHUB)
 ====================================================================
 
-🤖 **OPENAI — INTELIGÊNCIA ARTIFICIAL**
-Responsável pela criação inteligente de todo o conteúdo personalizado.
-
-**Funções principais:**
-- Geração de histórias adaptadas por idade e perfil da criança
-- Criação de textos educativos, positivos e adequados ao público infantil
-- Geração de ilustrações com estilo visual definido e sem conteúdo inadequado
-
-**Configuração de segurança:**
-- Chave de API gerada na conta da OpenAI
-- Cadastrada exclusivamente como variável de ambiente na Vercel
-- Nunca incluída diretamente no código ou arquivos do repositório
-
-**Funções desta plataforma:**
-✔ Criação de experiências únicas para cada criança
-✔ Geração automática de conteúdo consistente com as escolhas feitas
-✔ Ilustrações com padrão seguro e aprovado para o projeto
-
-====================================================================
-
-💳 **HOTMART — VENDAS E MONETIZAÇÃO**
-Plataforma responsável pelo processamento de pagamentos e liberação de acesso.
-
-**Configurações obrigatórias:**
-- Produtos cadastrados conforme os planos definidos: 15 dias, mensal e anual
-- Endereço de **Webhook** configurado para receber confirmações de compra
-- Regras de envio de dados para integração com o Supabase
-
-**Fluxo completo de funcionamento:**
-1. Responsável realiza a compra do plano escolhido
-2. Hotmart confirma e aprova o pagamento
-3. Sinal automático é enviado pelo Webhook
-4. Supabase registra e libera o acesso correspondente
-5. Usuário já pode entrar e usar o sistema
-
-**Funções desta plataforma:**
-✔ Processamento seguro de pagamentos por Pix, cartão e outros meios
-✔ Liberação automática logo após aprovação
-✔ Controle da validade e renovação de planos
-
-====================================================================
-
-🔄 **RESUMO GERAL DO FLUXO DE PLATAFORMAS**
-====================================================================
-
-📁 **GitHub** → Armazena todo o código e estrutura do projeto
-🌐 **Vercel** → Lê os arquivos, hospeda e disponibiliza o aplicativo online
-🧠 **Supabase** → Gerencia cadastro, login e banco de dados protegido
-🤖 **OpenAI** → Gera histórias e imagens personalizadas conforme regras
-💳 **Hotmart** → Processa pagamentos e envia confirmações para liberar acesso
-
-====================================================================
-
-🚀 **FLUXO GERAL DE USO DO SISTEMA**
-====================================================================
-
-1. Acesso inicial ao aplicativo hospedado na **Vercel**
-2. Realização de cadastro ou login seguro via **Supabase**
-3. Verificação automática para confirmar se o plano está ativo
-4. Personalização e criação da história usando a **OpenAI**
-5. Salvamento automático da história e dados no **Supabase**
-6. Contínua verificação de validade conforme dados vindos da **Hotmart**
-7. Uso total das funcionalidades dentro do período contratado
-
-====================================================================
-
-🎯 **OBJETIVO FINAL DO PROJETO**
-====================================================================
-
-Construir uma plataforma **SaaS infantil completa, segura e escalável**, reunindo todos os requisitos:
-✔ Funciona e pode ser instalado como aplicativo nativo em celulares
-✔ Histórias totalmente adaptadas e personalizadas por Inteligência Artificial
-✔ Sistema de cadastro e login seguro e protegido
-✔ Pagamentos processados e liberados de forma automática
-✔ Controle total de assinaturas e tempo de acesso
-✔ Banco de dados estruturado e em conformidade com a legislação
-✔ Experiência educativa, positiva e segura para crianças de 3 a 13 anos
