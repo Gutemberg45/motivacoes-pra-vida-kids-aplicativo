@@ -1,21 +1,9 @@
 {
-  "name": "Motivações Pra Vida Kids - Aplicativo",
-  "short_name": "MotivaKids",
-  "description": "Histórias personalizadas onde a criança é o herói",
+  "name": "Motivações Pra Vida Kids",
+  "short_name": "KidsApp",
   "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2f8fdf",
-  "icons": [
-    {
-      "src": "icone-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "icone-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ]
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2b7a78",
+  "orientation": "portrait"
 }
