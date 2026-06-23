@@ -1,31 +1,10 @@
-# 🚀 MOTIVAÇÕES PRA VIDA KIDS — ESTRUTURA COMPLETA DO APLICATIVO
-**Versão:** 2026 Definitiva
-**Público‑alvo:** Crianças de 3 a 13 anos + Responsáveis legais
-**Endereço oficial:** https://motivacoespravidakidsmd.vercel.app
-**Conformidade:** LGPD e normas de proteção à infância
-
 ====================================================================
-## 📑 1 — VISÃO E PRINCÍPIOS GERAIS
+## 🧩 3 — ESTRUTURA DAS PLATAFORMAS INTEGRADAS
 ====================================================================
 
-### 🎯 Objetivo Principal
-Oferecer um aplicativo **seguro, educativo e imersivo**, onde a criança é sempre a protagonista de histórias únicas geradas por Inteligência Artificial — com linguagem e complexidade adaptadas exatamente à sua idade.
+### 📁 GitHub
+- Armazena arquivos e controla versões
+- Ligação automática com a Vercel
 
-### ✨ Diferenciais
-- Total personalização antes de cada criação
-- Ilustrações consistentes com o perfil escolhido
-- Estilo visual suave, mágico e acolhedor
-- **Sem renovação automática** — renovação só com nova compra
-- Funciona como aplicativo instalável em celulares e tablets
-- Controle total e transparente para o responsável
-
-### ❌ Regras de Conteúdo Proibido
-- Sem violência, lutas, armas ou agressão
-- Sem cenas de medo, terror ou pesadelos
-- Sem linguagem ou temas inadequados à faixa etária
-- Sem compartilhamento público de dados pessoais ou fotos
-
-====================================================================
-## 📁 2 — ESTRUTURA DE ARQUIVOS E PASTAS (RAIZ DO GITHUB)
-====================================================================
-
+### 🌐 Vercel — Hospedagem
+- Variáveis secretas **só aqui — NUNCA aparecem no GitHub**:
