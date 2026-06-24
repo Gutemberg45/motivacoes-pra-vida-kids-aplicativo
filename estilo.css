@@ -1,0 +1,130 @@
+/* estilo.css - Motivações Pra Vida Kids */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #a8e6cf, #d0f0c0);
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.cabecalho {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 4px solid #ff6b6b;
+}
+
+h1 {
+  color: #ff6b6b;
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.navegacao {
+  margin-top: 15px;
+}
+
+.navegacao a {
+  margin: 0 12px;
+  color: #4ecdc4;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.formulario-historia {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #2c3e50;
+}
+
+.campo input, .campo textarea {
+  padding: 14px;
+  border: 2px solid #a8e6cf;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  background: #f8fff8;
+}
+
+.botao {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white;
+  padding: 16px;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.botao:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(78, 205, 196, 0.4);
+}
+
+.caixa-historia, .historia-card {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f8fff8;
+  border-radius: 16px;
+  border: 3px solid #a8e6cf;
+}
+
+.imagem-historia {
+  max-width: 100%;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.texto-historia {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.historia-card {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.historia-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+}
