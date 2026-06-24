@@ -1,104 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minhas Histórias — Motivações Pra Vida Kids</title>
-    <link rel="manifest" href="/manifest.json">
-    <style>
-        :root {
-            --verde-floresta: #2c5f2d;
-            --verde-suave: #97bc62;
-            --azul-ceu: #a8d1e7;
-            --dourado-suave: #f9dc5c;
-            --branco: #ffffff;
-            --texto: #2b2b2b;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
-        body {
-            background: linear-gradient(180deg, var(--azul-ceu) 0%, var(--verde-suave) 100%);
-            min-height: 100vh;
-            padding: 1rem;
-        }
-        .voltar {
-            color: var(--verde-floresta);
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-        .cabecalho { text-align: center; margin-bottom: 1.5rem; color: var(--verde-floresta); }
-        .lista {
-            max-width: 480px;
-            margin: 0 auto;
-        }
-        .cartao {
-            background: rgba(255,255,255,0.95);
-            padding: 1.2rem;
-            border-radius: 16px;
-            margin-bottom: 1rem;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
-        }
-        .cartao h3 { color: var(--verde-floresta); margin-bottom: 0.5rem; }
-        .cartao p { margin: 0.3rem 0; font-size: 0.95rem; }
-        .vazio {
-            text-align: center;
-            background: rgba(255,255,255,0.9);
-            padding: 2rem;
-            border-radius: 16px;
-            color: #444;
-        }
-        .botao {
-            display: inline-block;
-            margin-top: 0.8rem;
-            padding: 0.7rem 1.2rem;
-            background-color: var(--verde-floresta);
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca — Motivações Pra Vida Kids</title>
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <a href="/index.html" class="voltar">← Voltar à página inicial</a>
-
+  <div class="container">
     <header class="cabecalho">
-        <h1>📚 Minhas Histórias</h1>
-        <p>Suas aventuras criadas com carinho</p>
+      <img src="icone-512.png" alt="Logo" class="logo">
+      <h1>📚 Minhas Histórias</h1>
+      <nav class="navegacao">
+        <a href="criar-historia.html">✨ Nova História</a>
+        <a href="perfil.html">👤 Meu Perfil</a>
+      </nav>
     </header>
 
-    <main class="lista" id="lista-historias">
-        <div class="vazio">
-            <p>Ainda não há histórias salvas 😊</p>
-            <a href="/criar-historia.html" class="botao">Criar a primeira história</a>
-        </div>
+    <main class="conteudo">
+      <div class="lista-historias" id="lista-historias">
+        <p>Carregando suas histórias...</p>
+      </div>
     </main>
+  </div>
 
-    <script>
-        window.onload = function() {
-            const ultima = localStorage.getItem('ultimaHistoria');
-            if (ultima) {
-                const dados = JSON.parse(ultima);
-                const container = document.getElementById('lista-historias');
-                container.innerHTML = `
-                <div class="cartao">
-                    <h3>História de ${dados.nome}</h3>
-                    <p><strong>Idade:</strong> ${dados.idade} anos</p>
-                    <p><strong>Tema:</strong> ${dados.tema}</p>
-                    <p><strong>Personagem:</strong> ${dados.personagem || 'Não informado'}</p>
-                    <p><strong>Lição:</strong> ${dados.mensagem || 'Curtir a aventura!'}</p>
-                    <a href="/criar-historia.html" class="botao">Criar nova história</a>
-                </div>`;
-            }
-        };
-    </script>
-<script type="module">
-  import { usuarioLogado } from './services/clerk.js';
-  if (!usuarioLogado()) {
-    window.location.href = '/login.html';
-  }
-</script>
+  <script type="module">
+    import { usuarioLogado } from './services/clerk.js';
+    import { supabase, idUsuarioAtual } from './services/supabase.js';
+
+    if (!usuarioLogado()) {
+      window.location.href = '/login.html';
+    }
+
+    async function carregarHistorias() {
+      const { data, error } = await supabase
+        .from('stories')
+        .select('*')
+        .eq('user_id', idUsuarioAtual())
+        .order('criado_em', { ascending: false });
+
+      const container = document.getElementById('lista-historias');
+
+      if (error || !data || data.length === 0) {
+        container.innerHTML = `<p>Você ainda não criou nenhuma história. <a href="criar-historia.html">Crie a primeira!</a></p>`;
+        return;
+      }
+
+      container.innerHTML = data.map(story => `
+        <div class="historia-card">
+          \( {story.imagens?.[0]?.url ? `<img src=" \){story.imagens[0].url}" alt="Capa">` : ''}
+          <div>
+            <h3>${story.titulo}</h3>
+            <small>${new Date(story.criado_em).toLocaleDateString('pt-BR')}</small>
+            <p>${story.texto_completo.substring(0, 150)}...</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    carregarHistorias();
+  </script>
 </body>
 </html>
