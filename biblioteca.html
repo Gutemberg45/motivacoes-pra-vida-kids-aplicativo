@@ -94,5 +94,11 @@
             }
         };
     </script>
+<script type="module">
+  import { usuarioLogado } from './services/clerk.js';
+  if (!usuarioLogado()) {
+    window.location.href = '/login.html';
+  }
+</script>
 </body>
 </html>
