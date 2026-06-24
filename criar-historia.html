@@ -1,30 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar História — Motivações Pra Vida Kids</title>
-    <link rel="manifest" href="/manifest.json">
-    <style>
-      body { font-family:Arial; text-align:center; padding:2rem; background:#f0f9f9; color:#2c3e50; }
-      .container { max-width:800px; margin:0 auto; background:#ffffffdd; border-radius:16px; padding:2rem; box-shadow:0 3px 15px #0000001a; }
-      .aviso { color:#666; font-size:0.95rem; margin:1.5rem 0; }
-      .voltar { display:inline-block; margin-top:1.5rem; color:#2b7a78; text-decoration:none; font-weight:bold; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar História — Motivações Pra Vida Kids</title>
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
   <div class="container">
-    <h2>📝 Área de Criação de Histórias</h2>
-    <p>Formulário de personalização da aventura — aqui serão definidos nome, idade, personagem, tema e detalhes.</p>
-    <div class="aviso">Página funcional: nenhum erro de tipo de página.</div>
-    <a href="/index.html" class="voltar">← Voltar à página inicial</a>
+    <header class="cabecalho">
+      <img src="icone-512.png" alt="Logo" class="logo">
+      <h1>Criar Nova História</h1>
+      <nav class="navegacao">
+        <a href="biblioteca.html">📚 Minhas Histórias</a>
+        <a href="perfil.html">👤 Meu Perfil</a>
+      </nav>
+    </header>
+
+    <main class="conteudo">
+      <form class="formulario-historia" id="form-historia">
+        <div class="campo">
+          <label>Nome da criança:</label>
+          <input type="text" id="nome" required placeholder="Ex: Luiza, Pedro">
+        </div>
+        <div class="campo">
+          <label>Idade:</label>
+          <input type="number" id="idade" min="1" max="12" required placeholder="Ex: 6">
+        </div>
+        <div class="campo">
+          <label>Tema ou lição principal:</label>
+          <textarea id="tema" required placeholder="Ex: amizade, coragem, respeito, ajudar os outros"></textarea>
+        </div>
+        <button type="submit" id="botao-gerar" class="botao">✨ Criar Minha História ✨</button>
+      </form>
+
+      <div id="resultado-historia" class="area-resultado"></div>
+    </main>
   </div>
-<script type="module">
-  import { usuarioLogado } from './services/clerk.js';
-  // Bloqueia acesso se não estiver logado
-  if (!usuarioLogado()) {
-    window.location.href = '/login.html';
-  }
-</script>
+
+  <script type="module">
+    import { usuarioLogado } from './services/clerk.js';
+    import { gerarHistoria, gerarImagem } from './services/openai.js';
+    import { supabase, idUsuarioAtual } from './services/supabase.js';
+
+    if (!usuarioLogado()) {
+      window.location.href = '/login.html';
+    }
+
+    const form = document.getElementById('form-historia');
+    const areaResultado = document.getElementById('resultado-historia');
+    const botaoGerar = document.getElementById('botao-gerar');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      botaoGerar.textContent = "Criando a aventura mágica...";
+      botaoGerar.disabled = true;
+      areaResultado.innerHTML = `<p style="text-align:center; padding:30px;">🧚 Aguarde, estamos criando uma história especial...</p>`;
+
+      try {
+        const dados = {
+          nome: document.getElementById('nome').value.trim(),
+          idade: document.getElementById('idade').value,
+          tema: document.getElementById('tema').value.trim()
+        };
+
+        const respostaTexto = await gerarHistoria(dados);
+        const textoHistoria = respostaTexto.choices?.[0]?.message?.content || "Não foi possível gerar a história.";
+
+        const descricaoImagem = `Ilustração infantil vibrante: criança chamada ${dados.nome}, ${dados.idade} anos, tema ${dados.tema}, estilo fofo, colorido e seguro`;
+        const respostaImagem = await gerarImagem(descricaoImagem);
+        const urlImagem = respostaImagem.data?.[0]?.url || "";
+
+        await supabase.from('stories').insert({
+          user_id: idUsuarioAtual(),
+          titulo: `Aventura de ${dados.nome}`,
+          texto_completo: textoHistoria,
+          imagens: urlImagem ? [{ url: urlImagem }] : null
+        });
+
+        areaResultado.innerHTML = `
+          <div class="caixa-historia">
+            \( {urlImagem ? `<img src=" \){urlImagem}" alt="Ilustração" class="imagem-historia">` : ""}
+            <h2>📖 História de ${dados.nome}</h2>
+            <div class="texto-historia">${textoHistoria.replace(/\n/g, '<br><br>')}</div>
+            <a href="biblioteca.html" class="botao">Ver Biblioteca</a>
+          </div>
+        `;
+
+      } catch (erro) {
+        console.error(erro);
+        areaResultado.innerHTML = `<p style="color:red; text-align:center;">❌ Erro ao gerar história. Verifique as chaves de API.</p>`;
+      } finally {
+        botaoGerar.textContent = "✨ Criar Minha História ✨";
+        botaoGerar.disabled = false;
+      }
+    });
+  </script>
 </body>
 </html>
