@@ -19,5 +19,12 @@
     <div class="aviso">Página funcional: nenhum erro de tipo de página.</div>
     <a href="/index.html" class="voltar">← Voltar à página inicial</a>
   </div>
+<script type="module">
+  import { usuarioLogado } from './services/clerk.js';
+  // Bloqueia acesso se não estiver logado
+  if (!usuarioLogado()) {
+    window.location.href = '/login.html';
+  }
+</script>
 </body>
 </html>
