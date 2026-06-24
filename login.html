@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt‑BR">
+<head>
+  <meta charset="UTF‑8">
+  <meta name="viewport" content="width=device‑width, initial‑scale=1.0">
+  <title>Entrar — Motivações Pra Vida Kids</title>
+  <link rel="stylesheet" href="estilo.css">
+  <script src="https://unpkg.com/@clerk/clerk-js@5/dist/clerk.browser.js"></script>
+</head>
+<body>
+  <div class="container login‑container">
+    <header class="cabecalho">
+      <img src="icone‑512.png" alt="Logo Motivações Pra Vida Kids" class="logo">
+      <h1>Motivações Pra Vida Kids</h1>
+      <p>Histórias que ensinam e inspiram</p>
+    </header>
+
+    <div id="entrar‑area" class="caixa‑conteudo">
+      <h2>Acesse sua conta</h2>
+      <div id="clerk‑sign‑in"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { clerk, usuarioLogado } from './services/clerk.js';
+    import { sincronizarUsuario } from './services/supabase.js';
+
+    // Se já estiver logado, vai direto criar história
+    if (usuarioLogado()) {
+      window.location.href = '/criar‑historia.html';
+    }
+
+    // Carrega o formulário de login
+    clerk.mountSignIn('#clerk‑sign‑in');
+
+    // Quando o login for concluído, salva dados no banco
+    clerk.addListener(async ({ user }) => {
+      if (user) {
+        await sincronizarUsuario({
+          id: user.id,
+          email: user.primaryEmailAddress?.emailAddress || "",
+          nome_responsavel: user.fullName || ""
+        });
+        window.location.href = '/criar‑historia.html';
+      }
+    });
+  </script>
+</body>
+</html>
+
