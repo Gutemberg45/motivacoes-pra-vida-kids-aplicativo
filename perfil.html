@@ -2,46 +2,30 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Perfil — Motivações Pra Vida Kids</title>
-  <link rel="stylesheet" href="estilo.css">
+  <title>Perfil</title>
 </head>
+
 <body>
-  <div class="container">
-    <header class="cabecalho">
-      <img src="icone-512.png" alt="Logo" class="logo">
-      <h1>👤 Meu Perfil</h1>
-      <nav class="navegacao">
-        <a href="criar-historia.html">✨ Nova História</a>
-        <a href="biblioteca.html">📚 Minhas Histórias</a>
-      </nav>
-    </header>
 
-    <main class="conteudo">
-      <div class="caixa-conteudo" id="perfil-info">
-        <h2>Informações do Responsável</h2>
-        <p>Carregando...</p>
-      </div>
-    </main>
-  </div>
+  <h1>👤 Perfil da Criança</h1>
 
-  <script type="module">
-    import { clerk } from './services/clerk.js';
+  <p id="user"></p>
 
-    const container = document.getElementById('perfil-info');
-    const user = clerk.user;
+  <script>
+    const usuario = localStorage.getItem("usuario");
 
-    if (user) {
-      container.innerHTML = `
-        <p><strong>Nome:</strong> ${user.fullName || 'Não informado'}</p>
-        <p><strong>Email:</strong> ${user.primaryEmailAddress?.emailAddress || 'Não informado'}</p>
-        <p><strong>ID da Conta:</strong> ${user.id}</p>
-        <br>
-        <button onclick="clerk.signOut()" class="botao" style="background:#ff6b6b;">Sair da Conta</button>
-      `;
+    console.log("👤 CONFIRMAÇÃO: perfil carregado");
+
+    if (!usuario) {
+      console.log("⛔ CONFIRMAÇÃO: usuário não logado");
+      window.location.href = "login.html";
     } else {
-      container.innerHTML = `<p>Faça login para ver seu perfil.</p>`;
+      document.getElementById("user").innerText =
+        "Bem-vindo: " + usuario;
+
+      console.log("🔓 CONFIRMAÇÃO: acesso liberado");
     }
   </script>
+
 </body>
 </html>
