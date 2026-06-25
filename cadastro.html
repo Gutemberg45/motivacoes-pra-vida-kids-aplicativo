@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro — Motivações Pra Vida Kids</title>
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" href="icone-192.png">
+</head>
+<body>
+  <div class="container-form">
+    <header class="cabecalho">
+      <h1>✨ Motivações Pra Vida Kids ✨</h1>
+      <h2>Criar Nova Conta</h2>
+      <p>Preencha os dados do responsável para começar</p>
+    </header>
+
+    <form id="formCadastro" class="formulario">
+      <div class="campo">
+        <label for="nomeResp">Nome completo:</label>
+        <input type="text" id="nomeResp" required placeholder="Seu nome completo">
+      </div>
+
+      <div class="campo">
+        <label for="emailResp">E‑mail:</label>
+        <input type="email" id="emailResp" required placeholder="exemplo@email.com">
+      </div>
+
+      <div class="campo">
+        <label for="senhaResp">Senha:</label>
+        <input type="password" id="senhaResp" required placeholder="Mínimo 6 caracteres — letras e números">
+      </div>
+
+      <div class="campo">
+        <label for="confirmaSenha">Confirmar senha:</label>
+        <input type="password" id="confirmaSenha" required placeholder="Repita a senha escolhida">
+      </div>
+
+      <div id="areaMensagem" class="mensagem"></div>
+
+      <button type="submit" class="botao-principal">Criar Conta</button>
+
+      <p class="texto-link">
+        Já tem conta? <a href="login.html">Ir para a tela de acesso</a>
+      </p>
+    </form>
+  </div>
+
+  <!-- Ligação com os serviços -->
+  <script type="module">
+    import { useClerk } from './servicos/clerk.js';
+    import { salvarUsuario } from './servicos/supabase.js';
+
+    const form = document.getElementById('formCadastro');
+    const areaMsg = document.getElementById('areaMensagem');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      areaMsg.textContent = '';
+      areaMsg.className = 'mensagem';
+
+      const nome = document.getElementById('nomeResp').value.trim();
+      const email = document.getElementById('emailResp').value.trim();
+      const senha = document.getElementById('senhaResp').value;
+      const confirma = document.getElementById('confirmaSenha').value;
+
+      // Validações locais
+      if (!nome || !email || !senha || !confirma) {
+        areaMsg.textContent = '❌ Preencha todos os itens obrigatórios';
+        areaMsg.classList.add('erro');
+        return;
+      }
+
+      if (senha !== confirma) {
+        areaMsg.textContent = '❌ As senhas não são iguais';
+        areaMsg.classList.add('erro');
+        return;
+      }
+
+      if (senha.length < 6) {
+        areaMsg.textContent = '❌ Senha deve ter pelo menos 6 caracteres';
+        areaMsg.classList.add('erro');
+        return;
+      }
+
+      try {
+        areaMsg.textContent = '⏳ Criando conta… aguarde';
+
+        // Criação pela autenticação
+        const usuario = await useClerk.signUp({
+          emailAddress: [email],
+          password: senha,
+          firstName: nome.split(' ')[0],
+          lastName: nome.split(' ').slice(1).join(' ')
+        });
+
+        // Salva dados adicionais no banco
+        await salvarUsuario({
+          id: usuario.id,
+          nome: nome,
+          email: email,
+          criadoEm: new Date().toISOString()
+        });
+
+        areaMsg.textContent = '✅ Conta criada com sucesso! Agora configure o perfil da criança para começar';
+        areaMsg.classList.add('sucesso');
+
+        // Redireciona após alguns instantes
+        setTimeout(() => {
+          window.location.href = 'perfil.html';
+        }, 2000);
+
+      } catch (erro) {
+        let textoErro = '❌ Não foi possível concluir o cadastro. Tente novamente.';
+
+        if (erro.message?.includes('already exists')) {
+          textoErro = '❌ Esse e‑mail já está cadastrado';
+        } else if (erro.message?.includes('password')) {
+          textoErro = '❌ Senha fraca ou inválida — use letras e números';
+        }
+
+        areaMsg.textContent = textoErro;
+        areaMsg.classList.add('erro');
+      }
+    });
+  </script>
+</body>
+</html>
