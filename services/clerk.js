@@ -1,17 +1,23 @@
-import { Clerk } from '@clerk/clerk-js';
+export const useClerk = {
+  async signIn(email, senha) {
 
-const clerkPublishableKey = import.meta.env.CLERK_PUBLISHABLE_KEY;
+    if (!email || !senha) {
+      throw new Error("Preencha todos os campos");
+    }
 
-export const clerk = new Clerk(clerkPublishableKey);
+    localStorage.setItem("usuario", email);
 
-export async function initClerk() {
-  await clerk.load();
-}
+    return true;
+  },
 
-export function usuarioLogado() {
-  return !!clerk.user;
-}
+  async signUp(dados) {
+    localStorage.setItem("usuario", dados.emailAddress[0]);
+    return {
+      id: "usr_" + Date.now()
+    };
+  },
 
-export function idUsuarioAtual() {
-  return clerk.user?.id || null;
-}
+  async signOut() {
+    localStorage.removeItem("usuario");
+  }
+};
