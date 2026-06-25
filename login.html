@@ -2,47 +2,38 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrar — Motivações Pra Vida Kids</title>
-  <link rel="stylesheet" href="estilo.css">
-  <script src="https://unpkg.com/@clerk/clerk-js@5/dist/clerk.browser.js"></script>
+  <title>Login</title>
 </head>
+
 <body>
-  <div class="container login-container">
-    <header class="cabecalho">
-      <img src="icone-512.png" alt="Logo" class="logo">
-      <h1>Motivações Pra Vida Kids</h1>
-      <p>Histórias que ensinam e inspiram</p>
-    </header>
 
-    <div class="caixa-conteudo">
-      <h2>Acesse sua conta</h2>
-      <div id="clerk-sign-in"></div>
-    </div>
-  </div>
+  <h2>🔐 Login</h2>
 
-  <script type="module">
-    import { clerk, initClerk, usuarioLogado } from './services/clerk.js';
-    import { sincronizarUsuario } from './services/supabase.js';
+  <input id="email" placeholder="Email"/>
+  <input id="senha" type="password" placeholder="Senha"/>
 
-    await initClerk();
+  <button onclick="login()">Entrar</button>
 
-    if (usuarioLogado()) {
-      window.location.href = '/criar-historia.html';
-    }
+  <script>
+    console.log("🔐 CONFIRMAÇÃO: tela de login carregada");
 
-    clerk.mountSignIn('#clerk-sign-in');
+    function login() {
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
 
-    clerk.addListener(async ({ user }) => {
-      if (user) {
-        await sincronizarUsuario({
-          id: user.id,
-          email: user.primaryEmailAddress?.emailAddress || "",
-          nome_responsavel: user.fullName || ""
-        });
-        window.location.href = '/criar-historia.html';
+      if (!email || !senha) {
+        console.log("❌ CONFIRMAÇÃO: campos vazios");
+        alert("Preencha todos os campos");
+        return;
       }
-    });
+
+      localStorage.setItem("usuario", email);
+
+      console.log("✅ CONFIRMAÇÃO: login realizado com sucesso");
+
+      window.location.href = "perfil.html";
+    }
   </script>
+
 </body>
 </html>
